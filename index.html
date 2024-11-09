@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to convert date to another timezone in javascript</title>
+</head>
+<body>
+<h1 style="color: green ">
+    Date and time conversion
+</h1>
+<b>
+    HOW TO CONVERT DATE TO ANOTHER TIMEZONE IN JAVASCRIPT?
+</b>
+<br><br>
+<button onclick="changeTimezone()">
+    Click here to change an IST date to us timezone
+</button>
+<!--add a div to display the output-->
+<div id="output"></div>
+<script type="text/javascript">
+    function changeTimezone(){
+        //creating a  UTC date (you mentioned IST, )
+        let date = new Date(Date.UTC(2024,11,20,3,0,0));
+        //show original UTC date 
+        document.getElementById('output').innerHTML = 'Given UTC datetime: ' + date.toUTCString() + '<br>';
+
+        let intlDateObj = new Intl.DateTimeFormat('en-US', {
+                timeZone: 'America/New_York',  // Set target timezone
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });  
+         // Format the date to US timezone
+         let usaTime = intlDateObj.format(date);
+         //Display converted date
+         document.getElementById('output').innerHTML += 'USA date (New York time): ' + usaTime;
+        }
+    
+</script> 
+</body>
+</html>
